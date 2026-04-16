@@ -1,24 +1,24 @@
 const request = require('supertest');
 const app = require('../src/app');
 
-describe('GET /', () => {
+describe('GET /api', () => {
   it('responde con status 200', async () => {
-    const res = await request(app).get('/');
+    const res = await request(app).get('/api');
     expect(res.statusCode).toBe(200);
   });
 
   it('responde con mensaje Hola Mundo!', async () => {
-    const res = await request(app).get('/');
+    const res = await request(app).get('/api');
     expect(res.body.message).toBe('Hola Mundo!');
   });
 
   it('responde con status ok', async () => {
-    const res = await request(app).get('/');
+    const res = await request(app).get('/api');
     expect(res.body.status).toBe('ok');
   });
 
   it('responde con un timestamp valido', async () => {
-    const res = await request(app).get('/');
+    const res = await request(app).get('/api');
     expect(res.body.timestamp).toBeDefined();
     expect(new Date(res.body.timestamp).toString()).not.toBe('Invalid Date');
   });
